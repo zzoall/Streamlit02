@@ -35,9 +35,9 @@ def get_ticker_symbol(company_name, maket_type):
 
 
 #사이드바, input text, 시작일과 종료일
-st.sidebar.header('회사 이름과 기간 입력')
-title = st.sidebar.text_input('회사이름', 'NAVER')
-date_range = st.sidebar.date_input("시작일과 종료일",[])
+st.sidebar.header('회사명과 기간을 입력하세요.')
+title = st.sidebar.text_input('회사명', 'NAVER')
+date_range = st.sidebar.date_input("기간", [datetime.date(2019, 1, 1), datetime.date(2021, 12, 31)])
 button = st.sidebar.button("주가 데이터 가져오기")
 
 
@@ -54,6 +54,7 @@ if button:
     st.subheader(f"[{title}] 주가 데이터")
     st.dataframe(df.head())
     st.line_chart(df)
+    st.bar_chart(df)
 
     st.write('#### 주가 데이터 파일 다운로드')
     
